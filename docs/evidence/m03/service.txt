@@ -1,0 +1,20 @@
+● cc-m03.service - PTI 2802 M03 Flask Application
+     Loaded: loaded (/etc/systemd/system/cc-m03.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-10-14 17:48:27 WIB; 34min ago
+   Main PID: 568 (gunicorn)
+      Tasks: 3 (limit: 1043)
+     Memory: 32.9M
+        CPU: 547ms
+     CGroup: /system.slice/cc-m03.service
+             ├─568 /srv/cc-m03/.venv/bin/python /srv/cc-m03/.venv/bin/gunicorn --workers 1 --threads 2 --bind 127.0.0.1:8000 --timeout 30 --access-logfile - --error-logfile - app:app
+             └─670 /srv/cc-m03/.venv/bin/python /srv/cc-m03/.venv/bin/gunicorn --workers 1 --threads 2 --bind 127.0.0.1:8000 --timeout 30 --access-logfile - --error-logfile - app:app
+
+Oct 14 17:48:27 cc-m03-25832074005 systemd[1]: Started PTI 2802 M03 Flask Application.
+Oct 14 17:48:28 cc-m03-25832074005 gunicorn[568]: [2026-10-14 17:48:28 +0700] [568] [INFO] Starting gunicorn 26.2.0
+Oct 14 17:48:28 cc-m03-25832074005 gunicorn[568]: [2026-10-14 17:48:28 +0700] [568] [INFO] Listening at: http://127.0.0.1:8000 (568)
+Oct 14 17:48:28 cc-m03-25832074005 gunicorn[568]: [2026-10-14 17:48:28 +0700] [568] [INFO] Using worker: gthread
+Oct 14 17:48:28 cc-m03-25832074005 gunicorn[670]: [2026-10-14 17:48:28 +0700] [670] [INFO] Booting worker with pid: 670
+Oct 14 17:48:28 cc-m03-25832074005 gunicorn[568]: [2026-10-14 17:48:28 +0700] [568] [ERROR] Control server error: [Errno 13] Permission denied: '/home/cloudstudent'
+Oct 14 17:49:41 cc-m03-25832074005 gunicorn[670]: 127.0.0.1 - - [14/Oct/2026:17:49:41 +0700] "GET /health HTTP/1.1" 200 91 "-" "curl/7.81.0"
+Oct 14 17:50:43 cc-m03-25832074005 gunicorn[670]: 127.0.0.1 - - [14/Oct/2026:17:50:43 +0700] "GET /health HTTP/1.1" 200 91 "-" "curl/8.4.0"
+Oct 14 18:22:54 cc-m03-25832074005 gunicorn[670]: 127.0.0.1 - - [14/Oct/2026:18:22:54 +0700] "GET / HTTP/1.1" 200 782 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
