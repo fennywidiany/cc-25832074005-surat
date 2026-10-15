@@ -1,43 +1,47 @@
 # Catatan Praktikum M03
 
 ## Lingkungan Aktual
-- VM Azure, Ubuntu Server 22.04.5 LTS, Python 3.10.12
-- 2 vCPU, 891 MiB RAM, 62 GB disk, tanpa swap
-- Modul menetapkan Ubuntu 24.04, 1 vCPU, disk 20 GB. Perbedaan dicatat
-  di ADR-0001.
+- VM Azure (East Asia), Ubuntu Server 24.04.5 LTS, kernel 7.0.0-1017-azure,
+  Python 3.12
+- 2 vCPU, 836 MiB RAM, disk 29 GB (OS disk), tanpa swap
+- Modul menetapkan 1 vCPU, 1 GB RAM, disk 20 GB. Versi OS sudah sesuai
+  modul (24.04). Selisih spesifikasi dicatat di ADR-0001.
+- Paket: Gunicorn 26.2.0, Flask 3.1.3, Caddy 2.11.7 (repo resmi Caddy)
 
 ## Temuan dan Troubleshooting
 
-### 1. Konfigurasi SSH di cloud-init menimpa hardening
-- Gejala: `sshd_config.d/50-cloud-init.conf` berisi
-  `PasswordAuthentication yes`, sedangkan `60-cloudimg-settings.conf`
-  berisi `no`.
-- Penyebab: OpenSSH memakai nilai pertama yang dibaca, urut menurut nama
-  file. File `99-pti2802.conf` (nama di modul) dibaca paling akhir
-  sehingga kalah.
-- Solusi: file hardening dinamai `01-pti2802.conf` agar dibaca paling
-  awal. Diverifikasi dengan `sudo sshd -T` (passwordauthentication no).
-- Bukti: login `fenny` ditolak dengan `Permission denied (publickey)`.
+### 1. Konfigurasi SSH bawaan VM berbeda dari target
+- Gejala: pada VM baru, `50-cloud-init.conf` sudah berisi
+  `PasswordAuthentication no` (VM dibuat dengan SSH key), tetapi
+  `PermitRootLogin` masih `without-password` dan `AllowUsers` belum ada.
+- Solusi: file hardening eksplisit `01-pti2802.conf` (PermitRootLogin no,
+  PasswordAuthentication no, KbdInteractiveAuthentication no,
+  AllowUsers cloudstudent). Dinamai 01 agar dibaca paling awal, karena
+  OpenSSH memakai nilai pertama yang dibaca.
+- Bukti: `sudo sshd -T` menampilkan nilai target. Login root dan login
+  password ditolak dengan `Permission denied (publickey)`.
 
 ### 2. Log Gunicorn: Control server error
 - Gejala: `[ERROR] Control server error: [Errno 13] Permission denied:
   '/home/cloudstudent'` pada log Gunicorn 26.2.0.
 - Penyebab: `ProtectHome=true` pada systemd membatasi akses ke /home,
-  sehingga fitur control socket opsional Gunicorn tidak dapat dibuat.
-- Dampak: tidak ada. Aplikasi tetap melayani request (/health = 200).
+  sehingga control socket opsional Gunicorn tidak dapat dibuat.
+- Dampak: tidak ada. Aplikasi tetap melayani request (/health = ok).
 - Keputusan: dibiarkan karena fitur tersebut tidak dipakai dan proteksi
   ProtectHome dipertahankan.
 
-### 3. Gunicorn manual bertahan setelah sesi SSH putus
-- Gejala: proses Gunicorn yang dijalankan manual dengan `&` masih
-  listen di 127.0.0.1:8000 setelah sesi SSH tertutup.
-- Pelajaran: proses background tidak otomatis mati saat sesi putus.
-  Proses dimatikan manual sebelum service systemd dibuat agar port 8000
-  tidak bentrok.
+### 3. Urutan kerja: kernel update sebelum hardening
+- Setelah `apt full-upgrade`, kernel baru (7.0.0-1017-azure) menunggu
+  reboot. Reboot dilakukan sebelum hardening SSH agar penyebab masalah
+  mudah dilacak.
+
+## Catatan Operasional
+- `sudo` tidak meminta password pada VM Azure ini (user dibuat tanpa
+  password, akses lewat SSH key).
+- Deploy key GitHub dibuat khusus untuk VM ini, tanpa write access.
 
 ## Verifikasi Reboot
-- Setelah `sudo reboot`: UFW active, Caddy active (running),
-  `cc-m03` enabled dan active, /health = ok.
+- Setelah `sudo reboot`: `cc-m03` dan `caddy` active otomatis, /health = ok.
 - Tes eksternal dari laptop ke IP publik berhasil setelah reboot.
 
 ## Catatan Jaringan

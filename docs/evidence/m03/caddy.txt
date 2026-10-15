@@ -1,21 +1,21 @@
 ● caddy.service - Caddy
-     Loaded: loaded (/lib/systemd/system/caddy.service; enabled; vendor preset: enabled)
-     Active: active (running) since Wed 2026-10-14 17:48:28 WIB; 34min ago
+     Loaded: loaded (/usr/lib/systemd/system/caddy.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-10-15 19:02:04 WIB; 8min ago
        Docs: https://caddyserver.com/docs/
-   Main PID: 567 (caddy)
-      Tasks: 7 (limit: 1043)
-     Memory: 53.1M
-        CPU: 187ms
+   Main PID: 730 (caddy)
+      Tasks: 8 (limit: 472)
+     Memory: 59.0M (peak: 59.9M)
+        CPU: 127ms
      CGroup: /system.slice/caddy.service
-             └─567 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+             └─730 /usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
 
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"warn","ts":1791974908.3189528,"logger":"http.auto_https","msg":"server is listening only on the HTTP port, so no automatic HTTPS will be applied to this server","server_name":"srv0","http_port":80}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.3229153,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0xe8bde5ea900"}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"warn","ts":1791974908.324585,"logger":"http","msg":"HTTP/2 skipped because it requires TLS","network":"tcp","addr":":80"}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"warn","ts":1791974908.3245983,"logger":"http","msg":"HTTP/3 skipped because it requires TLS","network":"tcp","addr":":80"}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.3246033,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.3314807,"msg":"autosaved config (load with --resume flag)","file":"/var/lib/caddy/.config/caddy/autosave.json"}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.3332615,"msg":"serving initial configuration"}
-Oct 14 17:48:28 cc-m03-25832074005 systemd[1]: Started Caddy.
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.3575437,"logger":"tls","msg":"storage cleaning happened too recently; skipping for now","storage":"FileStorage:/var/lib/caddy/.local/share/caddy","instance":"2215b01d-66e8-4a6e-96db-f10d5233a531","try_again":1792061308.3575428,"try_again_in":86399.999999599}
-Oct 14 17:48:28 cc-m03-25832074005 caddy[567]: {"level":"info","ts":1791974908.357612,"logger":"tls","msg":"finished cleaning storage units"}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.4350297,"logger":"tls.cache.maintenance","msg":"started background certificate maintenance","cache":"0x3a7175fb7d00"}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"warn","ts":1792065724.4350731,"logger":"http.auto_https","msg":"server is listening only on the HTTP port, so no automatic HTTPS will be applied to this server","server_name":"srv0","http_port":80}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"warn","ts":1792065724.4352965,"logger":"http","msg":"HTTP/2 skipped because it requires TLS","network":"tcp","addr":":80"}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"warn","ts":1792065724.4353042,"logger":"http","msg":"HTTP/3 skipped because it requires TLS","network":"tcp","addr":":80"}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.4353087,"logger":"http.log","msg":"server running","name":"srv0","protocols":["h1","h2","h3"]}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.437296,"msg":"autosaved config (load with --resume flag)","file":"/var/lib/caddy/.config/caddy/autosave.json"}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.4374084,"msg":"serving initial configuration"}
+Oct 15 19:02:04 cc-m03-25832074005 systemd[1]: Started caddy.service - Caddy.
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.4562788,"logger":"tls","msg":"storage cleaning happened too recently; skipping for now","storage":"FileStorage:/var/lib/caddy/.local/share/caddy","instance":"896fcdf5-4554-42a9-a134-004d4570e0c2","try_again":1792152124.4562776,"try_again_in":86399.999999569}
+Oct 15 19:02:04 cc-m03-25832074005 caddy[730]: {"level":"info","ts":1792065724.456375,"logger":"tls","msg":"finished cleaning storage units"}

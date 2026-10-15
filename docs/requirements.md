@@ -67,7 +67,7 @@ tindak lanjutnya tidak terlewat.
 - 2 vCPU
 - 891 MiB RAM
 - 62 GB disk
-- Ubuntu Server 22.04.5 LTS (modul menetapkan 24.04, lihat ADR-0001)
+- Ubuntu Server 24.04.5 LTS (sesuai modul, lihat ADR-0001)
 - public IPv4
 
 ## Acceptance Criteria M03

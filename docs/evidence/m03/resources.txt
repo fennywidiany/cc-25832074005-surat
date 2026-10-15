@@ -2,8 +2,8 @@
 2
 === MEMORY ===
                total        used        free      shared  buff/cache   available
-Mem:           891Mi       237Mi       213Mi       3.0Mi       440Mi       507Mi
+Mem:           836Mi       268Mi       245Mi       4.0Mi       348Mi       568Mi
 Swap:             0B          0B          0B
 === DISK ===
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/root        62G  3.4G   59G   6% /
+/dev/root        29G  2.8G   26G  10% /

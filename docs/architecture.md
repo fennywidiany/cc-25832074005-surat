@@ -18,7 +18,7 @@ flowchart TB
 - 2 vCPU
 - 891 MiB RAM
 - 62 GB disk
-- Ubuntu Server 22.04.5 LTS, Python 3.10
+- Ubuntu Server 24.04.5 LTS, Python 3.12.3
 
 ## Security Decisions
 - non-root administration (user cloudstudent)

@@ -7,14 +7,15 @@ Accepted
 Proyek perlu dideploy pertama kali ke VPS publik. Spesifikasi lingkungan
 yang sebenarnya (diukur dengan nproc, free -h, df -h):
 
-- VM cloud (Azure), Ubuntu Server 22.04.5 LTS, Python 3.10
+- VM cloud (Azure), Ubuntu Server 24.04.5 LTS, Python 3.12.3
 - 2 vCPU, 891 MiB RAM, disk 62 GB, tanpa swap
 - IPv4 publik, akses administrasi lewat SSH
 
-Catatan: modul menetapkan Ubuntu 24.04 (Python 3.12), 1 vCPU, dan
-disk 20 GB. VM yang tersedia berbeda dari asumsi tersebut. Perbedaan
-ini tidak mengubah keputusan arsitektur karena RAM (sekitar 1 GB)
-tetap menjadi batas utama, tetapi dicatat agar dokumentasi jujur.
+Catatan: versi OS sesuai modul (Ubuntu 24.04, Python 3.12). Spesifikasi
+VM berbeda dari asumsi modul (1 vCPU, 1 GB RAM, disk 20 GB): VM memiliki
+2 vCPU, RAM sedikit lebih kecil, dan disk lebih besar. Perbedaan ini
+tidak mengubah keputusan arsitektur karena RAM tetap menjadi batas
+utama, tetapi dicatat agar dokumentasi jujur.
 
 ## Decision
 - Flask sebagai framework aplikasi
@@ -55,7 +56,6 @@ tetap menjadi batas utama, tetapi dicatat agar dokumentasi jujur.
 - Hanya HTTP (belum HTTPS) sampai M04.
 - Satu VPS tanpa redundansi (single point of failure).
 - Deployment masih manual (git pull dan restart service).
-- Versi OS (22.04) tidak sama dengan versi di modul.
 
 ## Review Trigger
 Review pada M06/M07, atau jika beban melebihi kapasitas
