@@ -39,7 +39,7 @@ Detail ada di `docs/architecture.md`.
 - Caddy, Gunicorn, systemd, UFW
 
 ## Public Endpoint
-`http://40.83.96.115/`
+`http://20.2.137.217/`
 
 ## Health Check
 `GET /health`

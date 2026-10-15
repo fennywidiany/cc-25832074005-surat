@@ -14,10 +14,10 @@ Caddy listen di port 80, meneruskan ke `127.0.0.1:8000`
 (konfigurasi di `/etc/caddy/Caddyfile`)
 
 ## Public Endpoint
-`http://40.83.96.115/`
+`http://20.2.137.217/`
 
 ## Health Check
-`http://40.83.96.115/health`
+`http://20.2.137.217/health`
 
 ## Update Procedure
 
@@ -33,7 +33,7 @@ curl -fsS http://127.0.0.1/health
 ```
 
 Terakhir, tes dari client eksternal:
-`curl http://40.83.96.115/health`
+`curl http://20.2.137.217/health`
 
 ## Rollback Dasar
 
