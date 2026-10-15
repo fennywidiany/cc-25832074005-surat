@@ -35,7 +35,7 @@ Detail ada di `docs/architecture.md`.
 
 ## Infrastructure
 - VM Azure, Ubuntu Server 24.04.5 LTS
-- 2 vCPU, 891 MiB RAM, 62 GB disk
+- 2 vCPU, 836 MiB RAM, 29 GB disk
 - Caddy, Gunicorn, systemd, UFW
 
 ## Public Endpoint

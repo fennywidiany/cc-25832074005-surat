@@ -8,7 +8,7 @@ Proyek perlu dideploy pertama kali ke VPS publik. Spesifikasi lingkungan
 yang sebenarnya (diukur dengan nproc, free -h, df -h):
 
 - VM cloud (Azure), Ubuntu Server 24.04.5 LTS, Python 3.12.3
-- 2 vCPU, 891 MiB RAM, disk 62 GB, tanpa swap
+- 2 vCPU, 836 MiB RAM, disk 29 GB, tanpa swap
 - IPv4 publik, akses administrasi lewat SSH
 
 Catatan: versi OS sesuai modul (Ubuntu 24.04, Python 3.12). Spesifikasi
@@ -59,4 +59,4 @@ utama, tetapi dicatat agar dokumentasi jujur.
 
 ## Review Trigger
 Review pada M06/M07, atau jika beban melebihi kapasitas
-2 vCPU / 891 MiB RAM.
+2 vCPU / 836 MiB RAM.

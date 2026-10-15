@@ -16,8 +16,8 @@ flowchart TB
 
 ## Resource Constraints
 - 2 vCPU
-- 891 MiB RAM
-- 62 GB disk
+- 836 MiB RAM
+- 29 GB disk
 - Ubuntu Server 24.04.5 LTS, Python 3.12.3
 
 ## Security Decisions
