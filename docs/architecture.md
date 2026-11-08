@@ -1,5 +1,15 @@
 # Architecture v0.1
 
+## Deployment View (aktual, M03)
+
+```mermaid
+flowchart TD
+    I["Internet"] --> N["Azure NSG"]
+    N --> U["UFW"]
+    U --> C["Caddy :80"]
+    C --> G["Gunicorn 127.0.0.1:8000"]
+    G --> F["Flask"]
+```
 ## Target Architecture (rencana M04 dan M05)
 
 ```mermaid
