@@ -1,17 +1,19 @@
 # Architecture v0.1
 
-## Deployment View
+## Target Architecture (rencana M04 dan M05)
 
 ```mermaid
-flowchart TB
-    I[Internet]
-    N[Azure NSG]
-    F[UFW]
-    C[Caddy :80]
-    G[Gunicorn 127.0.0.1:8000]
-    A[Flask]
-
-    I --> N --> F --> C --> G --> A
+flowchart TD
+    U["Pengguna (browser)"] -->|"HTTPS 443 (rencana M04)"| FW["Azure NSG + UFW"]
+    subgraph VPS["VPS Azure Standard B2ats v2 - Ubuntu 24.04.5 LTS"]
+        FW --> C["Caddy (TLS, redirect HTTP ke HTTPS)"]
+        C --> G["Gunicorn 127.0.0.1:8000"]
+        G --> F["Flask (RBAC, nomor unik, disposisi)"]
+        F --> D[("SQLite")]
+        F --> L[("Folder lampiran")]
+    end
+    D -. "backup harian terenkripsi (rencana M05)" .-> B[("Azure Blob Storage privat, LRS")]
+    L -. "satu set dengan SQLite" .-> B
 ```
 
 ## Resource Constraints
