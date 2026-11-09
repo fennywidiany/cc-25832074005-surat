@@ -96,11 +96,8 @@ Dasar jumlah US$10: prakiraan maksimal bulanan di form budget sekitar US$9 dan b
 
 Catatan: tagihan VM saat ini hampir nol, sehingga mematikan VM belum tentu menghemat; yang menghemat adalah menghapus IP publik dan disk. Hal ini perlu diverifikasi.
 
-## 9. Bukti terlampir (screenshot tersanitasi, 7-8 November 2026)
-
-- Halaman Education Overview (kredit, sisa, kedaluwarsa)
-- Cost analysis per resource (1-7 November 2026)
-- Daftar Budgets dan rincian alert budget-suratkita
+## 9. Bukti terlampir (screenshot tersanitasi, di folder docs/evidence/, 7-8 November 2026)
+Berkas: ev07-01-education-kredit.png, ev07-02-cost-per-resource.png, ev07-03-budget-daftar.png, ev07-04-budget-rincian.png. Bagian yang ditutup hitam: URL, email, dan ID akun.
 
 ## 10. Isu tersisa
 
